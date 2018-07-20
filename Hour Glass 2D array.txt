@@ -1,0 +1,26 @@
+int findMax(vector<vector<int>> inputArray) {
+    int sizeOf2D = inputArray[0].size();
+    int horizontalMovement = sizeOf2D-3;
+    int individualSum=0,cumulitiveSum=0;
+    int minusLoop = sizeOf2D-2;
+    int iteratorColoumn=0;
+    for(iteratorColoumn=0;iteratorColoumn<minusLoop;iteratorColoumn++){
+        int Left=iteratorColoumn;
+        int LeftColoumn = 0;
+        int RightColoumn=0,MiddleColoumn=0;
+        while(Left<=horizontalMovement){
+            int Right = Left+2;
+            int Middle = Left+1;
+            RightColoumn = LeftColoumn+2;
+            MiddleColoumn = LeftColoumn+1;
+            individualSum=inputArray[Left][LeftColoumn] + inputArray[Left][MiddleColoumn] + inputArray[Left][RightColoumn] + inputArray[Middle][MiddleColoumn] + inputArray[Right][LeftColoumn] + inputArray[Right][MiddleColoumn] + inputArray[Right][RightColoumn];
+            Left++;
+            LeftColoumn+=1;
+        }
+        if(cumulitiveSum<individualSum){
+            cumulitiveSum=individualSum;
+        }
+    }
+    
+    return cumulitiveSum;
+}
